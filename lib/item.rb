@@ -18,4 +18,10 @@ class Item
   def no_bids?
     @bids.empty?
   end
+
+  def bidder_names
+    @bids.keys.map do |attendee|
+      attendee.name
+    end
+  end
 end
