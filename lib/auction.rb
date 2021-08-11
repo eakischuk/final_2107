@@ -19,4 +19,16 @@ class Auction
       item.no_bids?
     end
   end
+
+  def bid_on_items
+    @items.find_all do |item|
+      !item.no_bids?
+    end
+  end
+
+  def potential_revenue
+    bid_on_items.sum do |item|
+      item.current_high_bid
+    end
+  end
 end
