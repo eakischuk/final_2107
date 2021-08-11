@@ -1,7 +1,8 @@
 class Auction
-  attr_reader :items
+  attr_reader :items, :date
   def initialize
     @items = []
+    @date = Date.today.to_s
   end
 
   def add_item(item)
