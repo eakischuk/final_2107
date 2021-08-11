@@ -24,4 +24,8 @@ class Item
       attendee.name
     end
   end
+
+  def bidders
+    @bids.keys
+  end
 end
