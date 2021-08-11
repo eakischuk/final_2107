@@ -14,4 +14,8 @@ class Item
       bid
     end
   end
+
+  def no_bids?
+    @bids.empty?
+  end
 end
