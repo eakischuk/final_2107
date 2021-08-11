@@ -38,4 +38,11 @@ RSpec.describe Item do
     @item1.add_bid(@attendee2, 20)
     expect(@item1.no_bids?).to eq(false)
   end
+
+  it 'has bidders' do
+    @item1.add_bid(@attendee2, 20)
+    @item1.add_bid(@attendee1, 22)
+
+    expect(@item1.bidders).to eq(["Bob", "Megan"])
+  end
 end
