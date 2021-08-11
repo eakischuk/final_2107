@@ -43,6 +43,6 @@ RSpec.describe Item do
     @item1.add_bid(@attendee2, 20)
     @item1.add_bid(@attendee1, 22)
 
-    expect(@item1.bidders).to eq(["Bob", "Megan"])
+    expect(@item1.bidder_names).to eq(["Bob", "Megan"])
   end
 end
