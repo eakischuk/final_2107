@@ -31,4 +31,10 @@ class Auction
       item.current_high_bid
     end
   end
+
+  def bidders
+    @items.flat_map do |item|
+      item.bidder_names
+    end.uniq
+  end
 end
