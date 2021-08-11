@@ -1,12 +1,15 @@
 class Item
-  attr_reader :name, :bids
+  attr_reader :name, :bids, :bidding_status
   def initialize(name)
     @name = name
     @bids = {}
+    @bidding_status = 'open'
   end
 
   def add_bid(attendee, bid)
-    @bids[attendee] = bid
+    if open?
+      @bids[attendee] = bid
+    end
   end
 
   def current_high_bid
@@ -27,5 +30,13 @@ class Item
 
   def bidders
     @bids.keys
+  end
+
+  def open?
+    @bidding_status == 'open'
+  end
+
+  def close_bidding
+    @bidding_status = "closed"
   end
 end
