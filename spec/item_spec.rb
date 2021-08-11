@@ -32,4 +32,10 @@ RSpec.describe Item do
     @item1.add_bid(@attendee1, 22)
     expect(@item1.current_high_bid).to eq(22)
   end
+
+  it 'has no bids' do
+    expect(@item1.no_bids?).to eq(true)
+    @item1.add_bid(@attendee2, 20)
+    expect(@item1.no_bids?).to eq(false)
+  end
 end
