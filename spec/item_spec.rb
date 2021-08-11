@@ -66,7 +66,7 @@ RSpec.describe Item do
     expect(@item1.bids).to eq(result)
     @item1.close_bidding
     expect(@item1.open?).to eq(false)
-    @item1.add_bid(@attendee2, 25)
+    @item1.add_bid(@attendee3, 70)
     expect(@item1.bids).to eq(result)
   end
 end
