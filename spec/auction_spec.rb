@@ -2,6 +2,7 @@ require './lib/item'
 require './lib/auction'
 require './lib/attendee'
 require 'pry'
+require 'date'
 
 RSpec.describe Auction do
   before(:each) do
@@ -19,6 +20,10 @@ RSpec.describe Auction do
   it 'exists and has attributes' do
     expect(@auction).to be_an(Auction)
     expect(@auction.items).to eq([])
+    allow(Date).to receive(:today).and_return(Date.new(2012,11,16))
+    date_test = Date.today.to_s.split("-").reverse.join("/")
+    allow(@auction).to receive(:date).and_return(date_test)
+    expect(@auction.date).to eq('11/16/2012')
   end
 
   it 'can add items' do
