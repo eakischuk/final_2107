@@ -43,4 +43,19 @@ class Auction
       item.bidders
     end.uniq
   end
+
+  def attendee_items(attendee)
+    @items.find_all do |item|
+      item.bidders.include?(attendee)
+    end
+  end
+
+  def bidder_info
+    info = {}
+    active_attendees.each do |attendee|
+      info[attendee] = {budget: attendee.budget,
+                        items: attendee_items(attendee)}
+    end
+    info
+  end
 end
