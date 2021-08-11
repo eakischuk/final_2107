@@ -37,4 +37,10 @@ class Auction
       item.bidder_names
     end.uniq
   end
+
+  def active_attendees
+    @items.flat_map do |item|
+      item.bidders
+    end.uniq
+  end
 end
