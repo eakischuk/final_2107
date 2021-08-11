@@ -17,6 +17,7 @@ RSpec.describe Item do
     expect(@item1).to be_an(Item)
     expect(@item1.name).to eq('Chalkware Piggy Bank')
     expect(@item1.bids).to eq({})
+    expect(@item1.bidding_status).to eq('open')
   end
 
   it 'can add bids' do
@@ -50,5 +51,22 @@ RSpec.describe Item do
     @item1.add_bid(@attendee2, 20)
     @item1.add_bid(@attendee1, 22)
     expect(@item1.bidders).to eq([@attendee2, @attendee1])
+  end
+
+  it 'has open bids?' do
+    expect(@item1.open?).to eq(true)
+  end
+
+  it 'can close bids' do
+    expect(@item1.open?).to eq(true)
+    @item1.add_bid(@attendee2, 20)
+    @item1.add_bid(@attendee1, 22)
+    result = {@attendee2 => 20,
+              @attendee1 => 22}
+    expect(@item1.bids).to eq(result)
+    @item1.close_bidding
+    expect(@item1.open?).to eq(false)
+    @item1.add_bid(@attendee2, 25)
+    expect(@item1.bids).to eq(result)
   end
 end
