@@ -86,4 +86,24 @@ RSpec.describe Auction do
 
     expect(@auction.bidders).to eq(["Megan", "Bob", "Mike"])
   end
+
+  it 'has bidder info' do
+    @auction.add_item(@item1)
+    @auction.add_item(@item2)
+    @auction.add_item(@item3)
+    @auction.add_item(@item4)
+    @auction.add_item(@item5)
+    @item1.add_bid(@attendee1, 22)
+    @item1.add_bid(@attendee2, 20)
+    @item4.add_bid(@attendee3, 50)
+    @item3.add_bid(@attendee2, 15)
+    result = {@attendee1 => {budget: 50,
+                             items: [@item1]},
+              @attendee2 => {budget: 75,
+                             items: [@item1, @items]},
+              @attendee3 => {budget: 100,
+                             items: [@item4]}
+              }
+    expect(@auction.bidder_info).to eq(result)
+  end
 end
