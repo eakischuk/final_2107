@@ -56,7 +56,7 @@ RSpec.describe Auction do
     @item1.add_bid(@attendee1, 22)
     @item4.add_bid(@attendee3, 50)
     @item3.add_bid(@attendee2, 15)
-    expect(@auction.bid_on_items).to eq([@item1, @item4, @item3])
+    expect(@auction.bid_on_items).to eq([@item1, @item3, @item4])
   end
 
   it 'has potential revenue' do
