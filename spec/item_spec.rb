@@ -39,10 +39,16 @@ RSpec.describe Item do
     expect(@item1.no_bids?).to eq(false)
   end
 
-  it 'has bidders' do
+  it 'has bidder names' do
     @item1.add_bid(@attendee2, 20)
     @item1.add_bid(@attendee1, 22)
 
     expect(@item1.bidder_names).to eq(["Bob", "Megan"])
+  end
+
+  it 'has bidders' do
+    @item1.add_bid(@attendee2, 20)
+    @item1.add_bid(@attendee1, 22)
+    expect(@item1.bidders).to eq([@attendee2, @attendee1])
   end
 end
